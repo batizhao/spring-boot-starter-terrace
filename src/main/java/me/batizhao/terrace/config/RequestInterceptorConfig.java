@@ -86,6 +86,10 @@ public class RequestInterceptorConfig {
         };
     }
 
+    /**
+     * 调用 login 接口获取 token
+     * @return LoginResult
+     */
     private LoginResult getLoginResult() {
         TerraceLoginApi loginApi = Feign.builder()
                 .client(new ApacheHttpClient())
