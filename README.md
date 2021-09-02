@@ -7,7 +7,7 @@ Maven
 <dependency>
    <groupId>me.batizhao</groupId>
    <artifactId>terrace-sdk-boot-starter</artifactId>
-   <version>1.0</version>
+   <version>1.1</version>
 </dependency>
 ```
 
@@ -19,6 +19,8 @@ client:
     enabled: true
     client-id: xxx
     client-secret: xxx
+    key-token: "terrace:token:data"
+    key-expire: "terrace:token:expire"
     url: http://172.31.21.208:8886/terrace/
     # local or redis
     token-store-location: local

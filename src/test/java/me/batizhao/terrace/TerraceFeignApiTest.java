@@ -3,15 +3,17 @@ package me.batizhao.terrace;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 import me.batizhao.terrace.api.TerraceApi;
-import me.batizhao.terrace.config.RequestInterceptorConfig;
-import me.batizhao.terrace.config.TerraceClientConfig;
+import me.batizhao.terrace.config.TerraceClientAutoConfiguration;
 import me.batizhao.terrace.config.TerraceClientProperties;
 import me.batizhao.terrace.dto.*;
 import me.batizhao.terrace.vo.InitProcessDefView;
 import me.batizhao.terrace.vo.ProcessRouterView;
 import me.batizhao.terrace.vo.TaskNodeView;
 import me.batizhao.terrace.vo.TodoTaskView;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -34,12 +36,13 @@ import static org.hamcrest.Matchers.*;
  */
 @ExtendWith(SpringExtension.class)
 @ActiveProfiles("test")
-@Tag("api")
-@Import({TerraceClientConfig.class, RequestInterceptorConfig.class})
+@Import({TerraceClientAutoConfiguration.class})
 @EnableConfigurationProperties(value = TerraceClientProperties.class)
 @TestPropertySource(properties = {"client.terrace.enabled=true",
         "client.terrace.client-id=jsoa",
         "client.terrace.client-secret=123456",
+        "client.terrace.key-token=terrace:token:data",
+        "client.terrace.key-expire=terrace:token:expire",
         "client.terrace.url=http://172.31.21.208:8886/terrace/",
         "client.terrace.token-store-location=local"})
 @Slf4j
@@ -51,8 +54,8 @@ public class TerraceFeignApiTest {
 
     @Autowired
     private TerraceClientProperties terraceClientProperties;
-    @MockBean
-    private RedisTemplate redisTemplate;
+//    @MockBean
+//    private RedisTemplate redisTemplate;
 
     private static String taskId;
     private static String procInstId;

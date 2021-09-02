@@ -36,4 +36,14 @@ public class TerraceClientProperties {
      */
     private String tokenStoreLocation;
 
+    /**
+     * Token 存储方式（local、redis）
+     */
+    private String keyToken;
+
+    /**
+     * Token 存储方式（local、redis）
+     */
+    private String keyExpire;
+
 }
