@@ -5,7 +5,6 @@ import cn.hutool.core.date.DateUtil;
 import feign.RequestTemplate;
 import me.batizhao.terrace.dto.LoginResult;
 import org.apache.http.HttpHeaders;
-import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.Map;
@@ -15,7 +14,6 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author batizhao
  * @date 2021/9/2
  */
-@Component
 public class TerraceLocalTokenInterceptor extends BaseTokenRequestInterceptor {
 
     private final Map<String, String> map = new ConcurrentHashMap<>();

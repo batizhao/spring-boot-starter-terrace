@@ -9,7 +9,6 @@ import feign.slf4j.Slf4jLogger;
 import lombok.RequiredArgsConstructor;
 import me.batizhao.terrace.api.TerraceApi;
 import me.batizhao.terrace.exception.FeignErrorDecoder;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;

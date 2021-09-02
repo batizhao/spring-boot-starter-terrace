@@ -6,9 +6,7 @@ import feign.RequestTemplate;
 import me.batizhao.terrace.dto.LoginResult;
 import org.apache.http.HttpHeaders;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.Objects;
@@ -17,8 +15,6 @@ import java.util.Objects;
  * @author batizhao
  * @date 2021/9/2
  */
-@Component
-@ConditionalOnBean(RedisTemplate.class)
 public class TerraceRedisTokenInterceptor extends BaseTokenRequestInterceptor {
 
     @Autowired
