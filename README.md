@@ -7,7 +7,7 @@ Maven
 <dependency>
    <groupId>me.batizhao</groupId>
    <artifactId>terrace-sdk-boot-starter</artifactId>
-   <version>1.1</version>
+   <version>1.1.1</version>
 </dependency>
 ```
 

@@ -1,3 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  me.batizhao.terrace.config.TerraceClientAutoConfiguration, \
-  me.batizhao.terrace.config.TerraceTokenAutoConfiguration
+  me.batizhao.terrace.config.TerraceClientAutoConfiguration

@@ -2,11 +2,13 @@ package me.batizhao.terrace.config;
 
 import feign.Feign;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.core.RedisTemplate;
 
 /**
  * @author batizhao
@@ -20,11 +22,12 @@ public class TerraceTokenAutoConfiguration {
 
     @Bean
     @ConditionalOnProperty(name = "client.terrace.token-store-location", havingValue = "local")
-    public TerraceLocalTokenInterceptor terraceLocalTokenInterceptor(TerraceClientProperties terraceClientProperties) {
-        return new TerraceLocalTokenInterceptor(terraceClientProperties);
+    public TerraceLocalTokenInterceptor terraceLocalTokenInterceptor(TerraceClientProperties properties) {
+        return new TerraceLocalTokenInterceptor(properties);
     }
 
     @Bean
+    @ConditionalOnBean(RedisTemplate.class)
     @ConditionalOnProperty(name = "client.terrace.token-store-location", havingValue = "redis")
     public TerraceRedisTokenInterceptor terraceRedisTokenInterceptor(TerraceClientProperties properties) {
         return new TerraceRedisTokenInterceptor(properties);
