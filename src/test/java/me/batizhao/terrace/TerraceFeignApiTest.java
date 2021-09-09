@@ -128,9 +128,8 @@ public class TerraceFeignApiTest {
         AppTodoTaskDTO dto = new AppTodoTaskDTO();
         dto.setBusinessModuleId("12");
         dto.setUserName("1");
-        dto.setQueryType("1");
 
-        R<Page<TodoTaskView>> result = terraceApi.loadTasks(dto);
+        R<Page<TodoTaskView>> result = terraceApi.loadTasks(dto.getUserName(), dto.getBusinessModuleId(), dto.getQueryType());
 
         assertThat(result.getCode(), equalTo("000000"));
         assertThat(result.getData().getTotal(), greaterThan(0L));

@@ -43,11 +43,15 @@ public interface TerraceApi {
     /**
      * 任务获取
      *
-     * @param dto
+     * @param userName
+     * @param businessModuleId
+     * @param queryType
      * @return
      */
-    @RequestLine("GET oa/task/todo")
-    R<Page<TodoTaskView>> loadTasks(AppTodoTaskDTO dto);
+    @RequestLine("GET oa/task/todo?userName={userName}&businessModuleId={businessModuleId}&queryType={queryType}")
+    R<Page<TodoTaskView>> loadTasks(@Param("userName") String userName,
+                                    @Param("businessModuleId") String businessModuleId,
+                                    @Param("queryType") String queryType);
 
     /**
      * 通过流程任务id获取任务信息

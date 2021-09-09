@@ -2,7 +2,6 @@ package me.batizhao.terrace.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
@@ -13,7 +12,6 @@ import java.io.Serializable;
  * @author wws
  * @since 2021-05-18 09:29
  */
-@Data
 @NoArgsConstructor
 @ApiModel(value = "待办任务查询参数", description = "待办任务查询参数")
 public class TodoTask extends BaseTask implements Serializable {
@@ -29,4 +27,36 @@ public class TodoTask extends BaseTask implements Serializable {
 
     @ApiModelProperty(value = "任务类型 0 所有任务 1、审核任务 2、传阅任务", name = "type")
     private String type;
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public String getTaskName() {
+        return taskName;
+    }
+
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
+    }
+
+    public String getQueryType() {
+        return queryType;
+    }
+
+    public void setQueryType(String queryType) {
+        this.queryType = queryType;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }

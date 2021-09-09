@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author batizhao
@@ -23,7 +24,7 @@ public class TaskNodeView {
         private String type;
         private List<String> userKeys;
         private List<String> groupKeys;
-        private String controlCode;
+        private Map<String, String> controlCode;
     }
 
     @Data
