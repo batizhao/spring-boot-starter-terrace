@@ -7,10 +7,7 @@ import me.batizhao.terrace.dto.AppTodoTaskDTO;
 import me.batizhao.terrace.dto.R;
 import me.batizhao.terrace.dto.StartProcessDTO;
 import me.batizhao.terrace.dto.SubmitProcessDTO;
-import me.batizhao.terrace.vo.InitProcessDefView;
-import me.batizhao.terrace.vo.ProcessRouterView;
-import me.batizhao.terrace.vo.TaskNodeView;
-import me.batizhao.terrace.vo.TodoTaskView;
+import me.batizhao.terrace.vo.*;
 
 import java.util.List;
 
@@ -81,5 +78,17 @@ public interface TerraceApi {
      */
     @RequestLine("POST oa/runtime/submit")
     R<String> submit(SubmitProcessDTO dto);
+
+    /**
+     * 获取流程指定环节意见
+     * @param procInstId
+     * @param taskDefKeyList
+     * @param orderRule
+     * @return
+     */
+    @RequestLine("GET /oa/history/{procInstId}/process/message?taskDefKeyList={taskDefKeyList}&orderRule={orderRule}")
+    R<List<ProcessMessageView>> loadMessage(@Param("procInstId") String procInstId,
+                                            @Param("taskDefKeyList") List<String> taskDefKeyList,
+                                            @Param("orderRule") Integer orderRule);
 
 }

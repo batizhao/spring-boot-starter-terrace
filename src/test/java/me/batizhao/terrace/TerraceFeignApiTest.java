@@ -6,10 +6,7 @@ import me.batizhao.terrace.api.TerraceApi;
 import me.batizhao.terrace.config.TerraceClientAutoConfiguration;
 import me.batizhao.terrace.config.TerraceClientProperties;
 import me.batizhao.terrace.dto.*;
-import me.batizhao.terrace.vo.InitProcessDefView;
-import me.batizhao.terrace.vo.ProcessRouterView;
-import me.batizhao.terrace.vo.TaskNodeView;
-import me.batizhao.terrace.vo.TodoTaskView;
+import me.batizhao.terrace.vo.*;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -17,13 +14,12 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.Collections;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -198,5 +194,13 @@ public class TerraceFeignApiTest {
 
         assertThat(result.getCode(), equalTo("000000"));
         assertThat(result.getData().get(0).getName(), equalTo("送部门审核"));
+    }
+
+    @Test
+    void givenTaskDef_whenLoadMessage_thenSuccess() {
+        R<List<ProcessMessageView>> result = terraceApi.loadMessage("1308400", Collections.singletonList("usertask2"), 0);
+
+        assertThat(result.getCode(), equalTo("000000"));
+        assertThat(result.getData(), notNullValue(List.class));
     }
 }
