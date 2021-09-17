@@ -125,10 +125,11 @@ public class TerraceFeignApiTest {
         dto.setBusinessModuleId("12");
         dto.setUserName("1");
 
-        R<Page<TodoTaskView>> result = terraceApi.loadTasks(dto.getUserName(), dto.getBusinessModuleId(), dto.getQueryType());
+        R<Page<TodoTaskView>> result = terraceApi.loadTodoTasks(3L,2L, dto.getUserName(), dto.getBusinessModuleId(), dto.getQueryType(), 0, "0", null);
 
         assertThat(result.getCode(), equalTo("000000"));
-        assertThat(result.getData().getTotal(), greaterThan(0L));
+        assertThat(result.getData().getCurrent(), equalTo(3L));
+        assertThat(result.getData().getSize(), equalTo(2L));
         assertThat(result.getData().getRecords().get(0).getTaskId(), notNullValue());
         assertThat(result.getData().getRecords().get(0).getProcInstId(), notNullValue());
 
@@ -202,5 +203,29 @@ public class TerraceFeignApiTest {
 
         assertThat(result.getCode(), equalTo("000000"));
         assertThat(result.getData(), notNullValue(List.class));
+    }
+
+    @Test
+    void givenParam_whenLoadHandledTask_thenSuccess() {
+        R<Page<TodoTaskView>> result = terraceApi.loadDoneTask(3L,2L,null,null, null, "1", null, "0", null);
+
+        assertThat(result.getCode(), equalTo("000000"));
+        assertThat(result.getData().getCurrent(), equalTo(3L));
+        assertThat(result.getData().getSize(), equalTo(2L));
+        assertThat(result.getData().getRecords().get(0).getTaskId(), notNullValue());
+        assertThat(result.getData().getRecords().get(0).getProcInstId(), notNullValue());
+    }
+
+    @Test
+    void givenParam_whenSignAndUnsigned_thenSuccess() {
+        R<Boolean> result = terraceApi.sign("1308717","0","1");
+
+        assertThat(result.getCode(), equalTo("000000"));
+        assertThat(result.getData(), equalTo(true));
+
+        result = terraceApi.unsigned("1308717","0","1");
+
+        assertThat(result.getCode(), equalTo("000000"));
+        assertThat(result.getData(), equalTo(true));
     }
 }
