@@ -138,8 +138,8 @@ public interface TerraceApi {
     /**
      * 解签
      * @param taskId 任务Id
-     * @param type 签收人
-     * @param userId 任务类型：0 审批任务、 1 传阅任务
+     * @param type 任务类型：0 审批任务、 1 传阅任务
+     * @param userId 签收人
      * @return
      */
     @RequestLine("POST /oa/task/{taskId}/{type}/{userId}/unsigned")
