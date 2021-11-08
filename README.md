@@ -1,4 +1,4 @@
-# terrace-sdk-boot-starter
+# spring-boot-starter-terrace
 在 Spring Boot 2.5.4 上通过测试。
 
 Maven
@@ -6,15 +6,15 @@ Maven
 ```xml
 <dependency>
    <groupId>me.batizhao</groupId>
-   <artifactId>terrace-sdk-boot-starter</artifactId>
-   <version>1.1.1</version>
+   <artifactId>spring-boot-starter-terrace</artifactId>
+   <version>1.1.2</version>
 </dependency>
 ```
 
 application.yml
 
 ```yaml
-client:
+pecado:
   terrace:
     enabled: true
     client-id: xxx
