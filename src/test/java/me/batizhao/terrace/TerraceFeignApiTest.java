@@ -34,13 +34,13 @@ import static org.hamcrest.Matchers.*;
 @ActiveProfiles("test")
 @Import({TerraceClientAutoConfiguration.class})
 @EnableConfigurationProperties(value = TerraceClientProperties.class)
-@TestPropertySource(properties = {"client.terrace.enabled=true",
-        "client.terrace.client-id=jsoa",
-        "client.terrace.client-secret=123456",
-        "client.terrace.key-token=terrace:token:data",
-        "client.terrace.key-expire=terrace:token:expire",
-        "client.terrace.url=http://172.31.21.208:8886/terrace/",
-        "client.terrace.token-store-location=local"})
+@TestPropertySource(properties = {"pecado.terrace.enabled=true",
+        "pecado.terrace.client-id=jsoa",
+        "pecado.terrace.client-secret=123456",
+        "pecado.terrace.key-token=terrace:token:data",
+        "pecado.terrace.key-expire=terrace:token:expire",
+        "pecado.terrace.url=http://172.31.21.208:8886/terrace/",
+        "pecado.terrace.token-store-location=memory"})
 @Slf4j
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TerraceFeignApiTest {
@@ -50,8 +50,6 @@ public class TerraceFeignApiTest {
 
     @Autowired
     private TerraceClientProperties terraceClientProperties;
-//    @MockBean
-//    private RedisTemplate redisTemplate;
 
     private static String taskId;
     private static String procInstId;
@@ -216,16 +214,16 @@ public class TerraceFeignApiTest {
         assertThat(result.getData().getRecords().get(0).getProcInstId(), notNullValue());
     }
 
-    @Test
-    void givenParam_whenSignAndUnsigned_thenSuccess() {
-        R<Boolean> result = terraceApi.sign("1308717","0","1");
-
-        assertThat(result.getCode(), equalTo("000000"));
-        assertThat(result.getData(), equalTo(true));
-
-        result = terraceApi.unsigned("1308717","0","1");
-
-        assertThat(result.getCode(), equalTo("000000"));
-        assertThat(result.getData(), equalTo(true));
-    }
+//    @Test
+//    void givenParam_whenSignAndUnsigned_thenSuccess() {
+//        R<Boolean> result = terraceApi.sign("1308717","0","1");
+//
+//        assertThat(result.getCode(), equalTo("000000"));
+//        assertThat(result.getData(), equalTo(true));
+//
+//        result = terraceApi.unsigned("1308717","0","1");
+//
+//        assertThat(result.getCode(), equalTo("000000"));
+//        assertThat(result.getData(), equalTo(true));
+//    }
 }

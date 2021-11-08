@@ -31,10 +31,10 @@
 		<maven.compiler.target>8</maven.compiler.target>
 
 		<feign.version>11.2</feign.version>
-		<hutool.version>5.7.9</hutool.version>
+		<hutool.version>5.7.15</hutool.version>
         <lombok.version>1.18.20</lombok.version>
         <mybatis-plus.version>3.4.3.1</mybatis-plus.version>
-		<spring-boot.version>2.5.4</spring-boot.version>
+		<spring-boot.version>2.5.6</spring-boot.version>
 		<swagger-annotations.version>1.6.2</swagger-annotations.version>
         <validation.version>2.0.2</validation.version>
 

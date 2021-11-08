@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @date 2021/6/11
  */
 @Data
-@ConfigurationProperties(prefix = "client.terrace")
+@ConfigurationProperties(prefix = "pecado.terrace")
 public class TerraceClientProperties {
 
     /**
@@ -32,17 +32,17 @@ public class TerraceClientProperties {
     private String clientSecret;
 
     /**
-     * Token 存储方式（local、redis）
+     * Token 存储方式（memory、redis）
      */
     private String tokenStoreLocation;
 
     /**
-     * Token 存储方式（local、redis）
+     * Token 存储方式（memory、redis）
      */
     private String keyToken;
 
     /**
-     * Token 存储方式（local、redis）
+     * Token 存储方式（memory、redis）
      */
     private String keyExpire;
 

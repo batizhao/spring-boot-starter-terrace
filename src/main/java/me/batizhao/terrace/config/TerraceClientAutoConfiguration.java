@@ -22,7 +22,7 @@ import org.springframework.context.annotation.Import;
 @RequiredArgsConstructor
 @Configuration
 @EnableConfigurationProperties(value = TerraceClientProperties.class)
-@ConditionalOnProperty(name = "client.terrace.enabled", havingValue = "true")
+@ConditionalOnProperty(name = "pecado.terrace.enabled", havingValue = "true")
 @Import(TerraceTokenAutoConfiguration.class)
 public class TerraceClientAutoConfiguration {
 
