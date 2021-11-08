@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
 	<groupId>me.batizhao</groupId>
-	<artifactId>terrace-sdk-boot-starter</artifactId>
+	<artifactId>spring-boot-starter-terrace</artifactId>
 	<version>1.1.2</version>
     <description>流程平台SDK</description>
 
