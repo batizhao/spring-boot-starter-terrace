@@ -2,7 +2,6 @@ package me.batizhao.terrace.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
@@ -13,7 +12,6 @@ import java.io.Serializable;
  * @author wws
  * @since 2021-05-18 09:18
  */
-@Data
 @NoArgsConstructor
 @ApiModel(value = "任务查询参数基础类", description = "任务查询参数基础类")
 public class BaseTask implements Serializable {
@@ -76,4 +74,44 @@ public class BaseTask implements Serializable {
 
     @ApiModelProperty(value = "登录名", name = "userName")
     private String userName;
+
+    public String getBusinessId() {
+        return businessId;
+    }
+
+    public void setBusinessId(String businessId) {
+        this.businessId = businessId;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 }

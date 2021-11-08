@@ -19,7 +19,7 @@ public class FeignErrorDecoder implements ErrorDecoder {
     @Override
     public Exception decode(String methodKey, Response response) {
         String json = Util.toString(response.body().asReader(Charset.defaultCharset()));
-        Exception exception = new StalberFeignException("An error occurred calling the process API.", response.status());
+        Exception exception = new StalberFeignException("An error occurred calling the process API, " + json, response.status());
         log.error("Feign 调用异常，方法：{}, 原始异常：{}", methodKey, json);
         return exception;
     }

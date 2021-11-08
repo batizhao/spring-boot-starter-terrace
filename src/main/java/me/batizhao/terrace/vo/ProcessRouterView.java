@@ -17,46 +17,46 @@ public class ProcessRouterView {
     /**
      * 流转线ID
      */
-    public String id;
+    private String id;
 
     /**
      * 流转线名称
      */
-    public String name;
+    private String name;
 
     /**
      * 流转线名称text（树适用）
      */
-    public String text;
+    private String text;
 
     /**
      * 是否为最末节点
      */
-    public boolean leaf;
+    private boolean leaf;
 
     /**
      * 控制码
      */
-    public Map<String, Object> controlCode = new HashMap<>();
+    private Map<String, String> controlCode = new HashMap<>();
 
     /**
      * 前一个网关节点
      */
-    public String gatewayId;
+    private String gatewayId;
 
     /**
      * 网关类型，用于选中时候，排除其他互斥
      */
-    public String gatewayType;
+    private String gatewayType;
 
     /**
      * 无限向下递归网关数据流转线获取
      */
-    public List<ProcessRouterView> nodes;
+    private List<ProcessRouterView> nodes;
 
     /**
      * 流转目标节点
      */
-    public NodeDTO node;
+    private NodeDTO node;
 
 }

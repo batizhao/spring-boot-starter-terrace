@@ -21,14 +21,14 @@ import org.springframework.data.redis.core.RedisTemplate;
 public class TerraceTokenAutoConfiguration {
 
     @Bean
-    @ConditionalOnProperty(name = "client.terrace.token-store-location", havingValue = "local")
+    @ConditionalOnProperty(name = "pecado.terrace.token-store-location", havingValue = "memory")
     public TerraceLocalTokenInterceptor terraceLocalTokenInterceptor(TerraceClientProperties properties) {
         return new TerraceLocalTokenInterceptor(properties);
     }
 
     @Bean
     @ConditionalOnBean(RedisTemplate.class)
-    @ConditionalOnProperty(name = "client.terrace.token-store-location", havingValue = "redis")
+    @ConditionalOnProperty(name = "pecado.terrace.token-store-location", havingValue = "redis")
     public TerraceRedisTokenInterceptor terraceRedisTokenInterceptor(TerraceClientProperties properties) {
         return new TerraceRedisTokenInterceptor(properties);
     }

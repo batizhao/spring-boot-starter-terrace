@@ -15,31 +15,31 @@ public class ProcessDefinitionDTO {
     /**
      * 流程定义id
      */
-    public String id;
+    private String id;
 
     /**
      * 流程分类
      */
-    public String category;
+    private String category;
 
     /**
      * 流程定义名称
      */
-    public String name;
+    private String name;
 
     /**
      * 流程定义key
      */
-    public String key;
+    private String key;
 
     /**
      * 版本号
      */
-    public int version;
+    private int version;
 
     /**
      * 部署id
      */
-    public String deploymentId;
+    private String deploymentId;
 
 }

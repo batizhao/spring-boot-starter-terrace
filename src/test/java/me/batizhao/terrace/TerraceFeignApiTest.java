@@ -6,10 +6,7 @@ import me.batizhao.terrace.api.TerraceApi;
 import me.batizhao.terrace.config.TerraceClientAutoConfiguration;
 import me.batizhao.terrace.config.TerraceClientProperties;
 import me.batizhao.terrace.dto.*;
-import me.batizhao.terrace.vo.InitProcessDefView;
-import me.batizhao.terrace.vo.ProcessRouterView;
-import me.batizhao.terrace.vo.TaskNodeView;
-import me.batizhao.terrace.vo.TodoTaskView;
+import me.batizhao.terrace.vo.*;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -17,13 +14,12 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.Collections;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -38,13 +34,13 @@ import static org.hamcrest.Matchers.*;
 @ActiveProfiles("test")
 @Import({TerraceClientAutoConfiguration.class})
 @EnableConfigurationProperties(value = TerraceClientProperties.class)
-@TestPropertySource(properties = {"client.terrace.enabled=true",
-        "client.terrace.client-id=jsoa",
-        "client.terrace.client-secret=123456",
-        "client.terrace.key-token=terrace:token:data",
-        "client.terrace.key-expire=terrace:token:expire",
-        "client.terrace.url=http://172.31.21.208:8886/terrace/",
-        "client.terrace.token-store-location=local"})
+@TestPropertySource(properties = {"pecado.terrace.enabled=true",
+        "pecado.terrace.client-id=jsoa",
+        "pecado.terrace.client-secret=123456",
+        "pecado.terrace.key-token=terrace:token:data",
+        "pecado.terrace.key-expire=terrace:token:expire",
+        "pecado.terrace.url=http://172.31.21.208:8886/terrace/",
+        "pecado.terrace.token-store-location=memory"})
 @Slf4j
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TerraceFeignApiTest {
@@ -54,8 +50,6 @@ public class TerraceFeignApiTest {
 
     @Autowired
     private TerraceClientProperties terraceClientProperties;
-//    @MockBean
-//    private RedisTemplate redisTemplate;
 
     private static String taskId;
     private static String procInstId;
@@ -128,12 +122,12 @@ public class TerraceFeignApiTest {
         AppTodoTaskDTO dto = new AppTodoTaskDTO();
         dto.setBusinessModuleId("12");
         dto.setUserName("1");
-        dto.setQueryType("1");
 
-        R<Page<TodoTaskView>> result = terraceApi.loadTasks(dto);
+        R<Page<TodoTaskView>> result = terraceApi.loadTodoTasks(3L,2L, dto.getUserName(), dto.getBusinessModuleId(), dto.getQueryType(), 0, "0", null);
 
         assertThat(result.getCode(), equalTo("000000"));
-        assertThat(result.getData().getTotal(), greaterThan(0L));
+        assertThat(result.getData().getCurrent(), equalTo(3L));
+        assertThat(result.getData().getSize(), equalTo(2L));
         assertThat(result.getData().getRecords().get(0).getTaskId(), notNullValue());
         assertThat(result.getData().getRecords().get(0).getProcInstId(), notNullValue());
 
@@ -200,4 +194,36 @@ public class TerraceFeignApiTest {
         assertThat(result.getCode(), equalTo("000000"));
         assertThat(result.getData().get(0).getName(), equalTo("送部门审核"));
     }
+
+    @Test
+    void givenTaskDef_whenLoadMessage_thenSuccess() {
+        R<List<ProcessMessageView>> result = terraceApi.loadMessage("1308400", Collections.singletonList("usertask2"), 0);
+
+        assertThat(result.getCode(), equalTo("000000"));
+        assertThat(result.getData(), notNullValue(List.class));
+    }
+
+    @Test
+    void givenParam_whenLoadHandledTask_thenSuccess() {
+        R<Page<TodoTaskView>> result = terraceApi.loadDoneTask(3L,2L,null,null, null, "1", null, "0", null);
+
+        assertThat(result.getCode(), equalTo("000000"));
+        assertThat(result.getData().getCurrent(), equalTo(3L));
+        assertThat(result.getData().getSize(), equalTo(2L));
+        assertThat(result.getData().getRecords().get(0).getTaskId(), notNullValue());
+        assertThat(result.getData().getRecords().get(0).getProcInstId(), notNullValue());
+    }
+
+//    @Test
+//    void givenParam_whenSignAndUnsigned_thenSuccess() {
+//        R<Boolean> result = terraceApi.sign("1308717","0","1");
+//
+//        assertThat(result.getCode(), equalTo("000000"));
+//        assertThat(result.getData(), equalTo(true));
+//
+//        result = terraceApi.unsigned("1308717","0","1");
+//
+//        assertThat(result.getCode(), equalTo("000000"));
+//        assertThat(result.getData(), equalTo(true));
+//    }
 }

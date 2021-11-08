@@ -12,7 +12,6 @@ import java.io.Serializable;
  * @author wws
  * @since 2021-05-18 10:54
  */
-@Data
 @ApiModel(value = "对接待办任务查询参数", description = "对接待办任务查询参数")
 public class AppTodoTaskDTO extends TodoTask implements Serializable {
 
@@ -21,5 +20,13 @@ public class AppTodoTaskDTO extends TodoTask implements Serializable {
 
     public AppTodoTaskDTO() {
         super.setQueryType("0");
+    }
+
+    public String getBusinessModuleId() {
+        return businessModuleId;
+    }
+
+    public void setBusinessModuleId(String businessModuleId) {
+        this.businessModuleId = businessModuleId;
     }
 }

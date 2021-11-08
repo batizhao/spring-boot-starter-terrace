@@ -2,6 +2,8 @@ package me.batizhao.terrace.vo;
 
 import lombok.Data;
 
+import java.util.Map;
+
 /**
  * @author batizhao
  * @date 2021/6/23
@@ -25,7 +27,7 @@ public class NodeConfig {
         private String key;
         private boolean fullyApproved;
         private boolean circulation;
-        private String controlCode;
+        private Map<String, String> controlCode;
         private boolean sendPhoneMessage;
     }
 
@@ -34,7 +36,7 @@ public class NodeConfig {
         private boolean need;
         private String pcPath;
         private String mobilePath;
-        private String controlCode;
+        private Map<String, String> controlCode;
     }
 
     @Data
