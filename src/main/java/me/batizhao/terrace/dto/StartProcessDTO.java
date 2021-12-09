@@ -1,7 +1,6 @@
 package me.batizhao.terrace.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,15 +12,15 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
-@ApiModel(value = "流程启动参数", description = "流程启动参数")
+@Schema(description = "流程启动参数")
 public class StartProcessDTO extends ProcessDTO {
 
     /**
      * 是否生成草稿任务
      **/
-    @ApiModelProperty(value = "是否生成草稿任务, 默认值：false", name = "draft")
+    @Schema(description = "是否生成草稿任务, 默认值：false", name = "draft")
     private Boolean draft;
 
-    @ApiModelProperty(value = "流程实例id", name = "procInstId")
+    @Schema(description = "流程实例id", name = "procInstId")
     private String procInstId;
 }

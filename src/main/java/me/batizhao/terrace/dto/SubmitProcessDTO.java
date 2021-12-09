@@ -1,7 +1,6 @@
 package me.batizhao.terrace.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,20 +14,20 @@ import javax.validation.constraints.NotNull;
  */
 @Data
 @NoArgsConstructor
-@ApiModel(value = "流程提交参数参数封装", description = "流程提交参数参数封装")
+@Schema(description = "流程提交参数参数封装")
 public class SubmitProcessDTO extends ProcessDTO {
 
     /**
      * 任务id
      */
     @NotNull(message = "任务id不能为空")
-    @ApiModelProperty(value = "任务id", name = "taskId", required = true)
+    @Schema(description = "任务id", name = "taskId", required = true)
     private String taskId;
 
     /**
      * 流程实例id
      */
     @NotNull(message = "流程实例id不能为空")
-    @ApiModelProperty(value = "流程实例id", name = "procInstId", required = true)
+    @Schema(description = "流程实例id", name = "procInstId", required = true)
     private String procInstId;
 }

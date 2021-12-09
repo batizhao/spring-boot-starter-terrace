@@ -1,7 +1,6 @@
 package me.batizhao.terrace.vo;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import me.batizhao.terrace.dto.ProcessDefinitionDTO;
 
@@ -12,18 +11,18 @@ import me.batizhao.terrace.dto.ProcessDefinitionDTO;
  * @since 2020-08-10 18:58
  */
 @Data
-@ApiModel(value = "初始化流程定义视图类", description = "初始化流程定义视图类")
+@Schema(description = "初始化流程定义视图类")
 public class InitProcessDefView {
 
     /**
      * 流程环节信息
      **/
-    @ApiModelProperty(value = "流程环节信息", name = "dto")
+    @Schema(description = "流程环节信息", name = "dto")
     private NodeView view;
 
     /**
      * 流程定义信息
      **/
-    @ApiModelProperty(value = "流程定义信息", name = "def")
+    @Schema(description = "流程定义信息", name = "def")
     private ProcessDefinitionDTO dto;
 }

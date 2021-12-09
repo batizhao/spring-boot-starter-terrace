@@ -1,7 +1,6 @@
 package me.batizhao.terrace.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
@@ -13,7 +12,7 @@ import java.io.Serializable;
  * @since 2021-05-18 09:18
  */
 @NoArgsConstructor
-@ApiModel(value = "任务查询参数基础类", description = "任务查询参数基础类")
+@Schema(description = "任务查询参数基础类")
 public class BaseTask implements Serializable {
 
     /**
@@ -60,19 +59,19 @@ public class BaseTask implements Serializable {
      **/
     public final static int TASK_QUERY_TYPE_MGR = 1;
 
-    @ApiModelProperty(value = "业务系统Id", name = "businessId", hidden = true)
+    @Schema(description = "业务系统Id", name = "businessId", hidden = true)
     private String businessId;
 
-    @ApiModelProperty(value = "正文编号", name = "code")
+    @Schema(description = "正文编号", name = "code")
     private String code;
 
-    @ApiModelProperty(value = "正文标题", name = "title")
+    @Schema(description = "正文标题", name = "title")
     private String title;
 
-    @ApiModelProperty(value = "姓名", name = "realName")
+    @Schema(description = "姓名", name = "realName")
     private String realName;
 
-    @ApiModelProperty(value = "登录名", name = "userName")
+    @Schema(description = "登录名", name = "userName")
     private String userName;
 
     public String getBusinessId() {

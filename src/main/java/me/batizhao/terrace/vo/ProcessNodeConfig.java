@@ -6,8 +6,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
@@ -20,7 +19,7 @@ import java.io.IOException;
  * @since 2020-08-07 11:14
  */
 @Data
-@ApiModel(value = "流程环节配置对象", description = "流程环节配置对象")
+@Schema(description = "流程环节配置对象")
 public class ProcessNodeConfig {
 
     /**
@@ -31,28 +30,28 @@ public class ProcessNodeConfig {
     /**
      * 流程定义Id
      */
-    @ApiModelProperty(value = "流程定义Id", name = "processDefId")
+    @Schema(description = "流程定义Id", name = "processDefId")
     @NotNull(message = "流程定义Id不能为空")
     private String processDefId;
 
     /**
      * 流程环节Key
      */
-    @ApiModelProperty(value = "流程环节Key", name = "taskDefKey")
+    @Schema(description = "流程环节Key", name = "taskDefKey")
     @NotNull(message = "流程环节Key不能为空")
     private String taskDefKey;
 
     /**
      * 业务系统Id
      */
-    @ApiModelProperty(value = "业务系统Id", name = "businessId")
+    @Schema(description = "业务系统Id", name = "businessId")
     @NotNull(message = "业务系统Id不能为空")
     private String businessId;
 
     /**
      * 配置信息
      */
-    @ApiModelProperty(value = "配置信息", name = "config")
+    @Schema(description = "配置信息", name = "config")
     @JsonDeserialize(using = NodeConfigDeserializer.class)
     private NodeConfig config;
 
