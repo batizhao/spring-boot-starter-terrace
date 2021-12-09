@@ -24,6 +24,7 @@
         <url>scm:git:git@github.com:batizhao/spring-boot-starter-terrace.git</url>
         <connection>scm:git:git@github.com:batizhao/spring-boot-starter-terrace.git</connection>
         <developerConnection>scm:git:git@github.com:batizhao/spring-boot-starter-terrace.git</developerConnection>
+        <tag>HEAD</tag>
     </scm>
 
     <properties>
