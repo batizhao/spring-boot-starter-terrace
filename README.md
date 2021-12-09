@@ -1,5 +1,5 @@
 # spring-boot-starter-terrace
-在 Spring Boot 2.5.4 上通过测试。
+在 Spring Boot 2.6.1 上通过测试。
 
 Maven
 
@@ -7,7 +7,7 @@ Maven
 <dependency>
    <groupId>me.batizhao</groupId>
    <artifactId>spring-boot-starter-terrace</artifactId>
-   <version>1.1.2</version>
+   <version>1.1.3</version>
 </dependency>
 ```
 
