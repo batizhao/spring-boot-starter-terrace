@@ -28,14 +28,19 @@ public class TerraceLocalTokenInterceptor extends BaseTokenRequestInterceptor {
 
     @Override
     public void apply(RequestTemplate requestTemplate) {
-        //判断本地token是否过期
+        //获取本地token过期时间
         String expireTime = map.get(getProperties().getKeyExpire());
+        //如果为空（第一次），或者已经过期
         if (expireTime == null || DateUtil.parse(expireTime).isBefore(new Date())) {
+            //重新发起登录请求
             LoginResult data = TerraceLogin.getLoginResult(getProperties());
+            //保存 token 和 过期时间到本地
             map.put(getProperties().getKeyToken(), data.getAccessToken());
+            //流程平台是12小时过期，这里使用12-1，预防时间不同步
             map.put(getProperties().getKeyExpire(), DateUtil.offsetHour(new Date(), 11).toString(DatePattern.NORM_DATETIME_MINUTE_FORMAT));
         }
 
+        //放到请求头中
         requestTemplate.header(HttpHeaders.AUTHORIZATION, map.get(getProperties().getKeyToken()))
                 .header(HttpHeaders.CONTENT_TYPE, "application/json");
     }
