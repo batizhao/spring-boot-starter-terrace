@@ -1,10 +1,7 @@
 package me.batizhao.terrace.vo;
 
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
@@ -68,6 +65,10 @@ public class ProcessNodeConfig {
             trimmed = trimmed.replace("\n", "");
 
             ObjectMapper mapper = new ObjectMapper();
+            //允许使用单引号
+            mapper.configure(JsonParser.Feature.ALLOW_SINGLE_QUOTES, true);
+            //解决序列化空对象问题
+            mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
             JsonNode obj = mapper.readTree(trimmed);
 
             return mapper.convertValue(obj, NodeConfig.class);

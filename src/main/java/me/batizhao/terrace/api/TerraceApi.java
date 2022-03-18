@@ -3,6 +3,7 @@ package me.batizhao.terrace.api;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import feign.Param;
 import feign.RequestLine;
+import me.batizhao.terrace.vo.QueryCandidateView;
 import me.batizhao.terrace.dto.R;
 import me.batizhao.terrace.dto.StartProcessDTO;
 import me.batizhao.terrace.dto.SubmitProcessDTO;
@@ -146,4 +147,22 @@ public interface TerraceApi {
     R<Boolean> unsigned(@Param("taskId") String taskId,
                         @Param("type") String type,
                         @Param("userId") String userId);
+
+    /**
+     * 候选人
+     * @param processInstId 流程实例Id
+     * @param taskDefKey 流程定义Id
+     * @param taskId 任务Id
+     * @param back 是否退回
+     * @param processDefId 流程定义Id
+     * @param orgId 任务组织Id
+     * @return
+     */
+    @RequestLine("GET /oa/runtime/candidate?processInstId={processInstId}&taskDefKey={taskDefKey}&taskId={taskId}&back={back}&processDefId={processDefId}&orgId={orgId}")
+    R<List<QueryCandidateView>> loadCandidate(@Param("processInstId") String processInstId,
+                                              @Param("taskDefKey") String taskDefKey,
+                                              @Param("taskId") String taskId,
+                                              @Param("back") Boolean back,
+                                              @Param("processDefId") String processDefId,
+                                              @Param("orgId") String orgId);
 }
