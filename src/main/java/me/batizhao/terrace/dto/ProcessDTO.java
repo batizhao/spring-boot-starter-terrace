@@ -49,15 +49,11 @@ public class ProcessDTO {
     /**
      * 当前任务处理人
      */
-    @NotEmpty(message = "当前任务处理人不能为空")
-    @Schema(description = "当前任务处理人", name = "userId", required = true)
     private String userId;
 
     /**
      * 当前任务处理人名字
      */
-    @NotEmpty(message = "当前任务处理人名字")
-    @Schema(description = "当前任务处理人名字", name = "userId", required = true)
     private String userName;
 
     /**
