@@ -13,6 +13,8 @@ import java.util.Map;
 @Data
 public class TaskNodeView {
 
+    private String procInstId;
+
     private Dto dto;
     private Config config;
     private List<CheckUserList> checkUserList;
