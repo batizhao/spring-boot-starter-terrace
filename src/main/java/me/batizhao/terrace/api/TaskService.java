@@ -97,4 +97,12 @@ public interface TaskService {
      * @return
      */
     List<QueryCandidateView> loadCandidate(String processInstId, String taskDefKey, String taskId, Boolean back, String processDefId, String orgId);
+
+    /**
+     * 获取流程定义对应的资源文件
+     * @param processDefId 流程定义Id
+     * @param sourceType 资源类型 0：xml文件 1：图片文件
+     * @return
+     */
+    byte[] loadProcessResource(String processDefId, String sourceType);
 }

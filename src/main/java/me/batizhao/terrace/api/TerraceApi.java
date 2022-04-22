@@ -165,4 +165,13 @@ public interface TerraceApi {
                                               @Param("back") Boolean back,
                                               @Param("processDefId") String processDefId,
                                               @Param("orgId") String orgId);
+
+    /**
+     * 获取流程定义对应的资源文件
+     * @param processDefId 流程定义Id
+     * @param sourceType 资源类型 0：xml文件 1：图片文件
+     * @return
+     */
+    @RequestLine("GET /oa/repository/{processDefId}/{sourceType}/resource")
+    R<byte[]> loadProcessResource(@Param("processDefId") String processDefId, @Param("sourceType") String sourceType);
 }

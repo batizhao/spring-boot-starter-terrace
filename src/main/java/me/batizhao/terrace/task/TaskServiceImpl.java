@@ -81,4 +81,9 @@ public class TaskServiceImpl implements TaskService {
     public List<QueryCandidateView> loadCandidate(String processInstId, String taskDefKey, String taskId, Boolean back, String processDefId, String orgId) {
         return terraceApi.loadCandidate(processInstId, taskDefKey, taskId, back, processDefId, orgId).getData();
     }
+
+    @Override
+    public byte[] loadProcessResource(String processDefId, String sourceType) {
+        return terraceApi.loadProcessResource(processDefId, sourceType).getData();
+    }
 }
